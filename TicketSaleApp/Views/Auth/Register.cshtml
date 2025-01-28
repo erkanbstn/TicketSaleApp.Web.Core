@@ -1,0 +1,48 @@
+﻿@model UserRegisterDTO
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/Login/index.css">
+    <title>Kayıt Ol</title>
+</head>
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form method="post">
+                    <h2>Kayıt Ol</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" asp-for="Email" required>
+                        <label for="">E-Posta</label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" asp-for="Password" required>
+                        <label for="">Şifre</label>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <button type="submit">Kayıt Ol</button>
+
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-danger" style="text-align:center">@ViewBag.Message</div>
+                    }
+
+                    <div class="register">
+                        <p>Zaten hesabın var mı? <a href="/Auth/Login">Giriş Yap</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layouts/_AdminLayout.cshtml";
+}
+
+@model List<Ticket>
+
+<h2>Biletler</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Bilet ID</th>
+            <th>Uçuş Numarası</th>
+            <th>Koltuk Numarası</th>
+            <th>Sahibi</th> 
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@ticket.TicketId</td>
+                <td>@ticket.Flight.FlightNumber</td>
+                <td>@ticket.Seat.SeatNumber</td>
+                <td>@ticket.User.FirstName @ticket.User.LastName</td> <!-- Kullanıcı bilgisi -->
+                <td>@ticket.Status</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Ticket", new { id = ticket.TicketId })" class="btn btn-primary">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Ticket")" class="btn btn-primary">Yeni Bilet Oluştur</a>

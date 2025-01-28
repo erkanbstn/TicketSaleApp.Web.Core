@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/Layouts/_AdminLayout.cshtml";
+}
+
+@model Seat
+
+<h2>Koltuk Düzenle</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="SeatId" />
+
+    <div class="form-group">
+        <label for="FlightId">Uçuş</label>
+        <select class="form-control" asp-for="FlightId" asp-items="ViewBag.Flights"></select>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="SeatNumber">Koltuk Numarası</label>
+        <input type="text" class="form-control" asp-for="SeatNumber" required />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="IsAvailable">Koltuk Durumu</label>
+        <select class="form-control" asp-for="IsAvailable" asp-items="ViewBag.IsAvailable"></select>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+</form>
+
+

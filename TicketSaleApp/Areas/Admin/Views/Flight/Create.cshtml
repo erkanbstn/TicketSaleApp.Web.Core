@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/Layouts/_AdminLayout.cshtml";
+}
+
+@model Flight
+
+<h2>Uçuş Oluştur</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label for="FlightNumber">Uçuş Numarası</label>
+        <input type="text" class="form-control" id="FlightNumber" name="FlightNumber" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="DepartureCity">Kalkış Yeri</label>
+        <input type="text" class="form-control" id="DepartureCity" name="DepartureCity" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="ArrivalCity">Varış Yeri</label>
+        <input type="text" class="form-control" id="ArrivalCity" name="ArrivalCity" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="DepartureTime">Kalkış Saati</label>
+        <input type="datetime-local" class="form-control" id="DepartureTime" name="DepartureTime" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="ArrivalTime">Varış Saati</label>
+        <input type="datetime-local" class="form-control" id="ArrivalTime" name="ArrivalTime" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="AvailableSeats">Boş Koltuk Sayısı</label>
+        <input type="number" class="form-control" id="AvailableSeats" name="AvailableSeats" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Yeni Uçuş Oluştur</button>
+</form>

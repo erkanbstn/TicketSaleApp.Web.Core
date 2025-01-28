@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Yeni Rezervasyon";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+}
+
+<div class="title">
+    <i class="uil uil-chart"></i>
+    <span class="text">Yeni Bilet</span>
+</div>
+
+<div class="form-container">
+    <h2>Yeni Bilet Satın Alın</h2>
+    <div class="inputbox">
+        <label for="SelectedDate">Tarih Seçin</label>
+        <input type="date" id="SelectedDate" class="form-control" required />
+    </div>
+
+    <br />
+
+    <!-- Uçuşları listelemek için bir alan -->
+    <div id="flightsListContainer">
+        <p>Uçuşlar buraya seçiminizden sonra yüklenecektir.</p>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Tarih seçildiğinde uçuşları listele
+            $('#SelectedDate').on('change', function () {
+                var selectedDate = $(this).val();
+
+                // Ajax çağrısı yaparak uçuşları getir
+                $.ajax({
+                    url: '@Url.Action("GetFlightsByDate", "User")',
+                    type: 'POST',
+                    data: { selectedDate: selectedDate },
+                    success: function (data) {
+                        // Uçuşları güncelle
+                        $('#flightsListContainer').html(data);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Hata oluştu: " + error);
+                    }
+                });
+            });
+        });
+    </script>
+}

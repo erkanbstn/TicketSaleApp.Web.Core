@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layouts/_AdminLayout.cshtml";
+}
+
+@model IEnumerable<Seat>
+
+<h2>Koltuk Listesi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Koltuk Numarası</th>
+            <th>Uçuş</th>
+            <th>Koltuk Durumu</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var seat in Model)
+        {
+            <tr>
+                <td>@seat.SeatNumber</td>
+                <td>@seat.Flight.FlightNumber</td>
+                <td>@(@seat.IsAvailable ? "Boş" : "Dolu")</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Seat", new { id = seat.SeatId })" class="btn btn-primary">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Seat")" class="btn btn-primary">Yeni Koltuk Oluştur</a>

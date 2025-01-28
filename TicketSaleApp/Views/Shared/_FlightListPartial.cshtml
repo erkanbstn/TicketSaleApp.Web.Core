@@ -1,0 +1,31 @@
+﻿@model List<Flight> 
+
+@if (Model != null && Model.Count > 0)
+{
+    <ul class="flight-list">
+        @foreach (var flight in Model)
+        {
+            <li>
+                <form method="post" action="~/User/CreateTicket">
+                    <input type="hidden" name="flightId" value="@flight.FlightId" />
+                    <label>@flight.FlightNumber - @flight.DepartureCity den @flight.ArrivalCity</label><br />
+                    <label>Kalkış Saati: @flight.DepartureTime.ToString("HH:mm")</label><br />
+                    <label for="SeatNumber">Koltuk Seçin</label>
+                    <select name="seatNumber" class="form-control" required>
+                        <!-- Uçuşa ait boş koltukları filtrele -->
+                        @foreach (var seat in flight.Seats.ToList().Where(s => s.IsAvailable==true))
+                        {
+                            <option value="@seat.SeatNumber">@seat.SeatNumber</option>
+                        }
+                    </select>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Satın Al</button>
+                </form>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No flights available for the selected date.</p>
+}

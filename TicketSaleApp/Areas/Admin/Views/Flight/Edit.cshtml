@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/Layouts/_AdminLayout.cshtml";
+}
+
+@model Flight
+
+<h2>Edit Flight</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="FlightId" />
+    <div class="form-group">
+        <label for="FlightNumber">Uçuş Numarası</label>
+        <input type="text" class="form-control" id="FlightNumber" asp-for="FlightNumber" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="DepartureCity">Kalkış Yeri</label>
+        <input type="text" class="form-control" id="DepartureCity" asp-for="DepartureCity" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="ArrivalCity">Varış Yeri</label>
+        <input type="text" class="form-control" id="ArrivalCity" asp-for="ArrivalCity" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="DepartureTime">Kalkış Saati</label>
+        <input type="datetime-local" class="form-control" id="DepartureTime" asp-for="DepartureTime" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="ArrivalTime">Varış Saati</label>
+        <input type="datetime-local" class="form-control" id="ArrivalTime" asp-for="ArrivalTime" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="AvailableSeats">Boş Koltuk Sayısı</label>
+        <input type="number" class="form-control" id="AvailableSeats" asp-for="AvailableSeats" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+</form>

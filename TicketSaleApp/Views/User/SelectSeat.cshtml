@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Koltuk Seç";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+}
+
+<div class="title">
+    <i class="uil uil-seat"></i>
+    <span class="text">Koltuk Seçin</span>
+</div>
+
+<form method="post" action="@Url.Action("CreateTicket", "Ticket")">
+    <!-- Seçilen uçuşun ID'si -->
+    <input type="hidden" name="flightId" value="@ViewBag.FlightId" />
+
+    <div class="form-container">
+        <h2>Koltuk Seçin</h2>
+
+        <div class="inputbox">
+            <label for="SeatNumber">Koltuk Seçin</label>
+            <select name="seatNumber" class="form-control" required>
+                <option value="">Koltuk Seçin</option>
+                @foreach (var seat in ViewBag.Seats as List<Seat>)
+                {
+                    <option value="@seat.SeatNumber">@seat.SeatNumber</option>
+                }
+            </select>
+        </div>
+
+        <br />
+        <button type="submit" class="btn btn-primary">Bileti Satın Al</button>
+    </div>
+</form>

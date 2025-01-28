@@ -1,0 +1,44 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Profil Düzenle";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+}
+
+<div class="title">
+    <i class="uil uil-user"></i>
+    <span class="text">Profil Bilgileri</span>
+</div>
+
+<form method="post">
+    <div class="form-container">
+        <h2>Profilinizi Düzenleyin</h2>
+
+        <div class="inputbox">
+            <label for="FirstName">Ad</label>
+            <input type="text" asp-for="FirstName" class="form-control" required />
+        </div>
+        <br />
+        <div class="inputbox">
+            <label for="LastName">Soyad</label>
+            <input type="text" asp-for="LastName" class="form-control" required />
+        </div>
+        <br />
+
+        <div class="inputbox">
+            <label for="Email">E-Posta</label>
+            <input type="email" asp-for="Email" class="form-control" required />
+        </div>
+        <br />
+
+        <div class="inputbox">
+            <label for="Password">Parola</label>
+            <input type="text" asp-for="Password" class="form-control" required />
+        </div>
+        <br />
+        <br />
+
+        <button type="submit" class="btn btn-primary">Bilgileri Güncelle</button>
+    </div>
+</form>
+

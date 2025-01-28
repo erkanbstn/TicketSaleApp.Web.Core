@@ -1,0 +1,46 @@
+﻿@model UserLoginDTO
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/Login/index.css">
+    <title>Giriş Yap</title>
+    
+</head>
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form method="post">
+                    <h2>Giriş Yap</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" asp-for="Email" required>
+                        <label for="">E-Posta</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" asp-for="Password" required>
+                        <label for="">Şifre</label>
+                    </div>
+                    <button>Giriş Yap</button>
+
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-danger" style="text-align:center" >@ViewBag.Message</div>
+                    }
+
+                    <div class="register">
+                        <p>Hesabın yok mu? <a href="/Auth/Register">Kayıt Ol</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

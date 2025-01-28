@@ -1,0 +1,32 @@
+﻿@model Ticket
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/Layouts/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Bilet Ekle</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="FlightId">Uçuş</label>
+        <select class="form-control" id="FlightId" asp-for="FlightId" asp-items="ViewBag.Flights"></select>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="SeatId">Koltuk</label>
+        <select class="form-control" id="SeatId" asp-for="SeatId" asp-items="ViewBag.Seats"></select>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="UserId">Kullanıcı</label>
+        <select class="form-control" id="UserId" asp-for="UserId" asp-items="ViewBag.Users"></select>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="Status">Durum</label>
+        <select class="form-control" id="Status" asp-for="Status" asp-items="ViewBag.Statuses"></select>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Yeni Bilet Oluştur</button>
+</form>

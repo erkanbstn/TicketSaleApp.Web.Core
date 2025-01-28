@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/Layouts/_AdminLayout.cshtml";
+}
+
+@model Seat
+
+<h2>Yeni Koltuk</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label for="FlightId">Uçuş</label>
+        <select class="form-control" id="FlightId" name="FlightId">
+            @foreach (var flight in ViewBag.Flights as List<Flight>)
+            {
+                <option value="@flight.FlightId">@flight.FlightNumber</option>
+            }
+        </select>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="SeatNumber">Koltuk Numarası</label>
+        <input type="text" class="form-control" id="SeatNumber" name="SeatNumber" required />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="IsAvailable">Koltuk Durumu</label>
+        <select class="form-control" id="IsAvailable" name="IsAvailable">
+            <option value="true">Boş</option>
+            <option value="false">Dolu</option>
+        </select>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Yeni Koltuk Oluştur</button>
+</form>

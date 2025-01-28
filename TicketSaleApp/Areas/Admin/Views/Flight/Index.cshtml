@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layouts/_AdminLayout.cshtml";
+}
+
+@model IEnumerable<Flight>
+
+<h2>Uçuş Listesi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Uçuş Numarası</th>
+            <th>Kalkış Yeri</th>
+            <th>Varış Yeri</th>
+            <th>Kalkış Zamanı</th>
+            <th>Varış Zamanı</th>
+            <th>Uygun Koltuk Sayısı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var flight in Model)
+        {
+            <tr>
+                <td>@flight.FlightNumber</td>
+                <td>@flight.DepartureCity</td>
+                <td>@flight.ArrivalCity</td>
+                <td>@flight.DepartureTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@flight.ArrivalTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@flight.AvailableSeats</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Flight", new { id = flight.FlightId })" class="btn btn-primary">Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Flight")" class="btn btn-primary">Yeni Uçuş Oluştur</a>
+
